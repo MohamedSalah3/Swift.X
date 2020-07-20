@@ -1,0 +1,366 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[v F68 `(v ~T0 @X0 0 tf ]
+"21 ./Timer_Config.h
+[; ;./Timer_Config.h: 21: {
+[s S2 `uc 1 `uc 1 `uc 1 `uc 1 `*F68 1 ]
+[n S2 Timer_cfg_s Timer_CH_NO Timer_Mode Timer_Polling_Or_Interrupt Timer_Prescaler Timer_Cbk_ptr ]
+"12 ./seven_segment.h
+[; ;./seven_segment.h: 12: void seven_seg_POV (void);
+[v _seven_seg_POV `(v ~T0 @X0 0 ef ]
+"28 ./Timer.h
+[; ;./Timer.h: 28: ERROR_STATUS Timer_Init(Timer_cfg_s* Timer_cfg);
+[v _Timer_Init `(uc ~T0 @X0 0 ef1`*S2 ]
+"58 ./DIO_Config.h
+[; ;./DIO_Config.h: 58: typedef struct DIO_Cfg_s{
+[s S1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1 DIO_Cfg_s port dir pin operation_mode ]
+"13 ./DIO.h
+[; ;./DIO.h: 13: ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);
+[v _DIO_init `(uc ~T0 @X0 0 ef1`*S1 ]
+"68 ./DIO_Config.h
+[; ;./DIO_Config.h: 68: extern DIO_Cfg_s Dio_configutation_A_7_seg;
+[v _Dio_configutation_A_7_seg `S1 ~T0 @X0 0 e ]
+"18 seven_segment.c
+[; ;seven_segment.c: 18:     ret += sevenSegDisable(SEG_0);
+[c E96 0 1 .. ]
+[n E96 En_SevenSegId_t SEG_0 SEG_1  ]
+"43 ./seven_segment.h
+[; ;./seven_segment.h: 43: ERROR_STATUS sevenSegDisable(En_SevenSegId_t en_segment_id);
+[v _sevenSegDisable `(uc ~T0 @X0 0 ef1`E96 ]
+"72 ./DIO_Config.h
+[; ;./DIO_Config.h: 72: extern DIO_Cfg_s Dio_configutation_D;
+[v _Dio_configutation_D `S1 ~T0 @X0 0 e ]
+"37 ./seven_segment.h
+[; ;./seven_segment.h: 37: ERROR_STATUS sevenSegEnable(uint8_t segment_id);
+[v _sevenSegEnable `(uc ~T0 @X0 0 ef1`uc ]
+"42 ./DIO.h
+[; ;./DIO.h: 42: ERROR_STATUS DIO_Write (uint8_t GPIO, uint8_t pins, uint8_t value);
+[v _DIO_Write `(uc ~T0 @X0 0 ef3`uc`uc`uc ]
+"42 ./Timer.h
+[; ;./Timer.h: 42: ERROR_STATUS Timer_Start(uint8_t Timer_CH_NO, uint16_t Timer_Count);
+[v _Timer_Start `(uc ~T0 @X0 0 ef2`uc`ui ]
+"13 ./seven_segment.h
+[; ;./seven_segment.h: 13: Timer_cfg_s Timer_Configuration1_7_seg =
+[v _Timer_Configuration1_7_seg `S2 ~T0 @X0 1 e ]
+[i _Timer_Configuration1_7_seg
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> 194 `i `uc
+-> -> 160 `i `uc
+-> -> 0 `i `uc
+&U _seven_seg_POV
+..
+..
+]
+"2 seven_segment.c
+[; ;seven_segment.c: 2: static uint8_t arr_display[2]={0,0};
+[v _arr_display `uc ~T0 @X0 -> 2 `i s ]
+[i _arr_display
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+"3
+[; ;seven_segment.c: 3: static uint8_t Segments_Code[10] = {0xFE,0x06,0x6D,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+[v _Segments_Code `uc ~T0 @X0 -> 10 `i s ]
+[i _Segments_Code
+:U ..
+-> -> 254 `i `uc
+-> -> 6 `i `uc
+-> -> 109 `i `uc
+-> -> 79 `i `uc
+-> -> 102 `i `uc
+-> -> 109 `i `uc
+-> -> 125 `i `uc
+-> -> 7 `i `uc
+-> -> 127 `i `uc
+-> -> 111 `i `uc
+..
+]
+"4
+[; ;seven_segment.c: 4: static uint8_t ovf_counter = 0;
+[v _ovf_counter `uc ~T0 @X0 1 s ]
+[i _ovf_counter
+-> -> 0 `i `uc
+]
+"5
+[; ;seven_segment.c: 5: static uint8_t disp_counter = 0;
+[v _disp_counter `uc ~T0 @X0 1 s ]
+[i _disp_counter
+-> -> 0 `i `uc
+]
+"10
+[; ;seven_segment.c: 10: ERROR_STATUS sevenSegInit(void)
+[v _sevenSegInit `(uc ~T0 @X0 1 ef ]
+"11
+[; ;seven_segment.c: 11: {
+{
+[e :U _sevenSegInit ]
+[f ]
+"12
+[; ;seven_segment.c: 12:     uint8_t ret=0;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"14
+[; ;seven_segment.c: 14:     ret =Timer_Init(&Timer_Configuration1_7_seg);
+[e = _ret ( _Timer_Init (1 &U _Timer_Configuration1_7_seg ]
+"17
+[; ;seven_segment.c: 17:     ret=DIO_init(&Dio_configutation_A_7_seg);
+[e = _ret ( _DIO_init (1 &U _Dio_configutation_A_7_seg ]
+"18
+[; ;seven_segment.c: 18:     ret += sevenSegDisable(SEG_0);
+[e =+ _ret -> ( _sevenSegDisable (1 . `E96 0 `uc ]
+"19
+[; ;seven_segment.c: 19:     ret += sevenSegDisable(SEG_1);
+[e =+ _ret -> ( _sevenSegDisable (1 . `E96 1 `uc ]
+"21
+[; ;seven_segment.c: 21:     ret=DIO_init(&Dio_configutation_D);
+[e = _ret ( _DIO_init (1 &U _Dio_configutation_D ]
+"22
+[; ;seven_segment.c: 22:     return ret;
+[e ) _ret ]
+[e $UE 3  ]
+"25
+[; ;seven_segment.c: 25: }
+[e :UE 3 ]
+}
+"26
+[; ;seven_segment.c: 26: void seven_seg_POV(void)
+[v _seven_seg_POV `(v ~T0 @X0 1 ef ]
+"27
+[; ;seven_segment.c: 27: {
+{
+[e :U _seven_seg_POV ]
+[f ]
+"28
+[; ;seven_segment.c: 28:     if(ovf_counter > 50){
+[e $ ! > -> _ovf_counter `i -> 50 `i 5  ]
+{
+"29
+[; ;seven_segment.c: 29:     *((reg_type8_t)(0x0008))=0x00;
+[e = *U -> -> 8 `i `*Vuc -> -> 0 `i `uc ]
+"30
+[; ;seven_segment.c: 30:     sevenSegEnable(disp_counter);
+[e ( _sevenSegEnable (1 _disp_counter ]
+"31
+[; ;seven_segment.c: 31:     *((reg_type8_t)(0x0008)) = Segments_Code[arr_display[disp_counter]];
+[e = *U -> -> 8 `i `*Vuc *U + &U _Segments_Code * -> *U + &U _arr_display * -> _disp_counter `ux -> -> # *U &U _arr_display `ui `ux `ux -> -> # *U &U _Segments_Code `ui `ux ]
+"32
+[; ;seven_segment.c: 32: ovf_counter=0;
+[e = _ovf_counter -> -> 0 `i `uc ]
+"33
+[; ;seven_segment.c: 33:  disp_counter++;
+[e ++ _disp_counter -> -> 1 `i `uc ]
+"34
+[; ;seven_segment.c: 34:     if(disp_counter == 2)
+[e $ ! == -> _disp_counter `i -> 2 `i 6  ]
+"35
+[; ;seven_segment.c: 35:         disp_counter = 0;
+[e = _disp_counter -> -> 0 `i `uc ]
+[e :U 6 ]
+"36
+[; ;seven_segment.c: 36:     }
+}
+[e :U 5 ]
+"37
+[; ;seven_segment.c: 37:    ovf_counter++;
+[e ++ _ovf_counter -> -> 1 `i `uc ]
+"39
+[; ;seven_segment.c: 39: *((reg_type8_t)(0x000B)) &= (~0x04);
+[e =& *U -> -> 11 `i `*Vuc -> ~ -> 4 `i `uc ]
+"40
+[; ;seven_segment.c: 40: }
+[e :UE 4 ]
+}
+"45
+[; ;seven_segment.c: 45: ERROR_STATUS sevenSegEnable(uint8_t segment_id)
+[v _sevenSegEnable `(uc ~T0 @X0 1 ef1`uc ]
+"46
+[; ;seven_segment.c: 46: {uint8_t ret=0;
+{
+[e :U _sevenSegEnable ]
+"45
+[; ;seven_segment.c: 45: ERROR_STATUS sevenSegEnable(uint8_t segment_id)
+[v _segment_id `uc ~T0 @X0 1 r1 ]
+"46
+[; ;seven_segment.c: 46: {uint8_t ret=0;
+[f ]
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"47
+[; ;seven_segment.c: 47: switch(segment_id)
+[e $U 9  ]
+"48
+[; ;seven_segment.c: 48:  {
+{
+"49
+[; ;seven_segment.c: 49: case SEG_0:
+[e :U 10 ]
+"50
+[; ;seven_segment.c: 50: ret += sevenSegDisable(SEG_1);
+[e =+ _ret -> ( _sevenSegDisable (1 . `E96 1 `uc ]
+"51
+[; ;seven_segment.c: 51: ret +=DIO_Write(0,0x04,0xFF);
+[e =+ _ret -> ( _DIO_Write (3 , , -> -> 0 `i `uc -> -> 4 `i `uc -> -> 255 `i `uc `uc ]
+"52
+[; ;seven_segment.c: 52: break;
+[e $U 8  ]
+"53
+[; ;seven_segment.c: 53: case SEG_1:
+[e :U 11 ]
+"54
+[; ;seven_segment.c: 54: ret += sevenSegDisable(SEG_0);
+[e =+ _ret -> ( _sevenSegDisable (1 . `E96 0 `uc ]
+"55
+[; ;seven_segment.c: 55: ret +=DIO_Write(0,0x08,0xFF);
+[e =+ _ret -> ( _DIO_Write (3 , , -> -> 0 `i `uc -> -> 8 `i `uc -> -> 255 `i `uc `uc ]
+"56
+[; ;seven_segment.c: 56: break;
+[e $U 8  ]
+"57
+[; ;seven_segment.c: 57: }
+}
+[e $U 8  ]
+[e :U 9 ]
+[e [\ -> _segment_id `i , $ . `E96 0 10
+ , $ . `E96 1 11
+ 8 ]
+[e :U 8 ]
+"59
+[; ;seven_segment.c: 59: return ret;
+[e ) _ret ]
+[e $UE 7  ]
+"61
+[; ;seven_segment.c: 61: }
+[e :UE 7 ]
+}
+"67
+[; ;seven_segment.c: 67: ERROR_STATUS sevenSegDisable(En_SevenSegId_t en_segment_id)
+[v _sevenSegDisable `(uc ~T0 @X0 1 ef1`E96 ]
+"68
+[; ;seven_segment.c: 68: {
+{
+[e :U _sevenSegDisable ]
+"67
+[; ;seven_segment.c: 67: ERROR_STATUS sevenSegDisable(En_SevenSegId_t en_segment_id)
+[v _en_segment_id `E96 ~T0 @X0 1 r1 ]
+"68
+[; ;seven_segment.c: 68: {
+[f ]
+"70
+[; ;seven_segment.c: 70: uint8_t ret=0;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"71
+[; ;seven_segment.c: 71: switch(en_segment_id)
+[e $U 14  ]
+"72
+[; ;seven_segment.c: 72:  {
+{
+"73
+[; ;seven_segment.c: 73: case SEG_0:
+[e :U 15 ]
+"74
+[; ;seven_segment.c: 74: ret +=DIO_Write(0,0x04,0);
+[e =+ _ret -> ( _DIO_Write (3 , , -> -> 0 `i `uc -> -> 4 `i `uc -> -> 0 `i `uc `uc ]
+"75
+[; ;seven_segment.c: 75: break;
+[e $U 13  ]
+"76
+[; ;seven_segment.c: 76: case SEG_1:
+[e :U 16 ]
+"77
+[; ;seven_segment.c: 77: ret +=DIO_Write(0,0x08,0);
+[e =+ _ret -> ( _DIO_Write (3 , , -> -> 0 `i `uc -> -> 8 `i `uc -> -> 0 `i `uc `uc ]
+"78
+[; ;seven_segment.c: 78: break;
+[e $U 13  ]
+"79
+[; ;seven_segment.c: 79: }
+}
+[e $U 13  ]
+[e :U 14 ]
+[e [\ -> _en_segment_id `ui , $ -> . `E96 0 `ui 15
+ , $ -> . `E96 1 `ui 16
+ 13 ]
+[e :U 13 ]
+"80
+[; ;seven_segment.c: 80: return ret;
+[e ) _ret ]
+[e $UE 12  ]
+"82
+[; ;seven_segment.c: 82: }
+[e :UE 12 ]
+}
+"87
+[; ;seven_segment.c: 87: ERROR_STATUS sevenSegWrite( uint8_t u8_number)
+[v _sevenSegWrite `(uc ~T0 @X0 1 ef1`uc ]
+"88
+[; ;seven_segment.c: 88: {
+{
+[e :U _sevenSegWrite ]
+"87
+[; ;seven_segment.c: 87: ERROR_STATUS sevenSegWrite( uint8_t u8_number)
+[v _u8_number `uc ~T0 @X0 1 r1 ]
+"88
+[; ;seven_segment.c: 88: {
+[f ]
+"89
+[; ;seven_segment.c: 89: uint8_t ret=0;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"90
+[; ;seven_segment.c: 90: if(u8_number < 99 && u8_number >= 10 ){
+[e $ ! && < -> _u8_number `i -> 99 `i >= -> _u8_number `i -> 10 `i 18  ]
+{
+"91
+[; ;seven_segment.c: 91:  arr_display[0] = (u8_number / 10);
+[e = *U + &U _arr_display * -> -> -> 0 `i `ui `ux -> -> # *U &U _arr_display `ui `ux -> / -> _u8_number `i -> 10 `i `uc ]
+"92
+[; ;seven_segment.c: 92:     u8_number%=10;
+[e =% _u8_number -> 10 `i ]
+"93
+[; ;seven_segment.c: 93:     arr_display[1] = u8_number;
+[e = *U + &U _arr_display * -> -> -> 1 `i `ui `ux -> -> # *U &U _arr_display `ui `ux _u8_number ]
+"94
+[; ;seven_segment.c: 94: }else if(u8_number < 10)
+}
+[e $U 19  ]
+[e :U 18 ]
+[e $ ! < -> _u8_number `i -> 10 `i 20  ]
+"95
+[; ;seven_segment.c: 95: {
+{
+"96
+[; ;seven_segment.c: 96: arr_display[0] = 0;
+[e = *U + &U _arr_display * -> -> -> 0 `i `ui `ux -> -> # *U &U _arr_display `ui `ux -> -> 0 `i `uc ]
+"97
+[; ;seven_segment.c: 97: arr_display[1] = u8_number;
+[e = *U + &U _arr_display * -> -> -> 1 `i `ui `ux -> -> # *U &U _arr_display `ui `ux _u8_number ]
+"98
+[; ;seven_segment.c: 98: }else{
+}
+[e $U 21  ]
+[e :U 20 ]
+{
+"99
+[; ;seven_segment.c: 99:     ret += 1;
+[e =+ _ret -> -> 1 `i `uc ]
+"100
+[; ;seven_segment.c: 100: }
+}
+[e :U 21 ]
+[e :U 19 ]
+"101
+[; ;seven_segment.c: 101:  ret=Timer_Start(0,100);
+[e = _ret ( _Timer_Start (2 , -> -> 0 `i `uc -> -> 100 `i `ui ]
+"102
+[; ;seven_segment.c: 102: return ret;
+[e ) _ret ]
+[e $UE 17  ]
+"103
+[; ;seven_segment.c: 103: }
+[e :UE 17 ]
+}
