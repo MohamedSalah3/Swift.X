@@ -130,14 +130,14 @@ switch(en_butotn_id)
 {
 case BTN_0:
 {
-    DIO_Read(2,0x10,&(u8_Button_press[0]));
+    DIO_Read(2,0x20,&(u8_Button_press[0]));
 if( u8_Button_press[0]== Pressed)
 {
  (u8_S_button_status[0])++;
 
 
 
- if( (u8_S_button_status[0]) > 50)
+ if( (u8_S_button_status[0]) > 10)
  pushreturn = Pressed;
  else {pushreturn = Released;}
 }else{pushreturn = Released;}
@@ -145,14 +145,14 @@ break;
 }
 case BTN_1:
 {
-    DIO_Read(1,0x04,&(u8_Button_press[1]));
+    DIO_Read(2,0x40,&(u8_Button_press[1]));
 if( u8_Button_press[1] == Pressed)
 {
  (u8_S_button_status[0])++;
 
 
 
- if( (u8_S_button_status[0]) > 50)
+ if( (u8_S_button_status[0]) > 10)
 return Pressed;
  else {pushreturn = Released;}
 }else{pushreturn = Released;}
@@ -160,13 +160,13 @@ break;
 }
 case BTN_2:
 {
-    DIO_Read(0,0x04,&(u8_Button_press[2]));
+    DIO_Read(2,0x80,&(u8_Button_press[2]));
 if((u8_Button_press[2])== Pressed)
 { (u8_S_button_status[1])++;
 
 
 
- if( (u8_S_button_status[1]) > 20)
+ if( (u8_S_button_status[1]) > 10)
  pushreturn = Pressed;
 else {pushreturn = Released;}
 }else{pushreturn = Released;}

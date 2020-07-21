@@ -1,0 +1,227 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[v F42 `(v ~T0 @X0 0 tf ]
+"21 ./Timer_Config.h
+[; ;./Timer_Config.h: 21: {
+[s S1 `uc 1 `uc 1 `uc 1 `uc 1 `*F42 1 ]
+[n S1 Timer_cfg_s Timer_CH_NO Timer_Mode Timer_Polling_Or_Interrupt Timer_Prescaler Timer_Cbk_ptr ]
+"12 ./seven_segment.h
+[; ;./seven_segment.h: 12: void seven_seg_POV (void);
+[v _seven_seg_POV `(v ~T0 @X0 0 ef ]
+"12 tasks1.c
+[; ;tasks1.c: 12:  if (pushButtonGetStatus(BTN_0))
+[c E181 0 1 2 .. ]
+[n E181 En_buttonId_t BTN_0 BTN_1 BTN_2  ]
+[c E186 0 1 .. ]
+[n E186 En_buttonStatus_t Released Pressed  ]
+"44 ./pushButton.h
+[; ;./pushButton.h: 44: En_buttonStatus_t pushButtonGetStatus(En_buttonId_t en_butotn_id);
+[v _pushButtonGetStatus `(E186 ~T0 @X0 0 ef1`E181 ]
+"49 ./seven_segment.h
+[; ;./seven_segment.h: 49: ERROR_STATUS sevenSegWrite(uint8_t u8_number);
+[v _sevenSegWrite `(uc ~T0 @X0 0 ef1`uc ]
+"20 ./ADC.h
+[; ;./ADC.h: 20: uint16_t ADC_READ(void);
+[v _ADC_READ `(ui ~T0 @X0 0 ef ]
+"23 ./i2c_EEPROM.h
+[; ;./i2c_EEPROM.h: 23: void EEPROM_Write(unsigned int add, unsigned char data);
+[v _EEPROM_Write `(v ~T0 @X0 0 ef2`ui`uc ]
+"25
+[; ;./i2c_EEPROM.h: 25: unsigned char EEPROM_Read(unsigned int add);
+[v _EEPROM_Read `(uc ~T0 @X0 0 ef1`ui ]
+"13 ./seven_segment.h
+[; ;./seven_segment.h: 13: Timer_cfg_s Timer_Configuration1_7_seg =
+[v _Timer_Configuration1_7_seg `S1 ~T0 @X0 1 e ]
+[i _Timer_Configuration1_7_seg
+:U ..
+:U ..
+-> -> 0 `i `uc
+-> -> 194 `i `uc
+-> -> 160 `i `uc
+-> -> 0 `i `uc
+&U _seven_seg_POV
+..
+..
+]
+"3 tasks1.c
+[; ;tasks1.c: 3: static uint16_t last_temp_reading =0;
+[v _last_temp_reading `ui ~T0 @X0 1 s ]
+[i _last_temp_reading
+-> -> 0 `i `ui
+]
+"4
+[; ;tasks1.c: 4: static uint16_t last_Ten_readings[10];
+[v _last_Ten_readings `ui ~T0 @X0 -> 10 `i s ]
+"6
+[; ;tasks1.c: 6: void Task1(void)
+[v _Task1 `(v ~T0 @X0 1 ef ]
+"7
+[; ;tasks1.c: 7: {
+{
+[e :U _Task1 ]
+[f ]
+"8
+[; ;tasks1.c: 8:   static uint8_t u8_Counter1=0;
+[v F199 `uc ~T0 @X0 1 s u8_Counter1 ]
+[i F199
+-> -> 0 `i `uc
+]
+"9
+[; ;tasks1.c: 9:   static uint8_t u8_Counter=0;
+[v F200 `uc ~T0 @X0 1 s u8_Counter ]
+[i F200
+-> -> 0 `i `uc
+]
+"11
+[; ;tasks1.c: 11:   static uint8_t u8_Counter2=0;
+[v F201 `uc ~T0 @X0 1 s u8_Counter2 ]
+[i F201
+-> -> 0 `i `uc
+]
+"12
+[; ;tasks1.c: 12:  if (pushButtonGetStatus(BTN_0))
+[e $ ! != -> ( _pushButtonGetStatus (1 . `E181 0 `ui -> -> 0 `i `ui 8  ]
+"13
+[; ;tasks1.c: 13:  {
+{
+"14
+[; ;tasks1.c: 14:   u8_Counter++;
+[e ++ F200 -> -> 1 `i `uc ]
+"15
+[; ;tasks1.c: 15:  }
+}
+[e :U 8 ]
+"16
+[; ;tasks1.c: 16:  if (u8_Counter > 10)
+[e $ ! > -> F200 `i -> 10 `i 9  ]
+"17
+[; ;tasks1.c: 17:  {
+{
+"19
+[; ;tasks1.c: 19:             u8_Counter=0;
+[e = F200 -> -> 0 `i `uc ]
+"20
+[; ;tasks1.c: 20:  }
+}
+[e :U 9 ]
+"22
+[; ;tasks1.c: 22:  if (pushButtonGetStatus(BTN_1))
+[e $ ! != -> ( _pushButtonGetStatus (1 . `E181 1 `ui -> -> 0 `i `ui 10  ]
+"23
+[; ;tasks1.c: 23:  {
+{
+"24
+[; ;tasks1.c: 24:   u8_Counter1++;
+[e ++ F199 -> -> 1 `i `uc ]
+"26
+[; ;tasks1.c: 26:  }
+}
+[e :U 10 ]
+"27
+[; ;tasks1.c: 27:  if (u8_Counter1 > 10)
+[e $ ! > -> F199 `i -> 10 `i 11  ]
+"28
+[; ;tasks1.c: 28:  {
+{
+"30
+[; ;tasks1.c: 30:   u8_Counter1=0;
+[e = F199 -> -> 0 `i `uc ]
+"31
+[; ;tasks1.c: 31:  }
+}
+[e :U 11 ]
+"32
+[; ;tasks1.c: 32:         if (pushButtonGetStatus(BTN_2))
+[e $ ! != -> ( _pushButtonGetStatus (1 . `E181 2 `ui -> -> 0 `i `ui 12  ]
+"33
+[; ;tasks1.c: 33:  {
+{
+"34
+[; ;tasks1.c: 34:   u8_Counter2++;
+[e ++ F201 -> -> 1 `i `uc ]
+"35
+[; ;tasks1.c: 35:  }
+}
+[e :U 12 ]
+"36
+[; ;tasks1.c: 36:  if (u8_Counter2 > 10)
+[e $ ! > -> F201 `i -> 10 `i 13  ]
+"37
+[; ;tasks1.c: 37:  {
+{
+"39
+[; ;tasks1.c: 39:             u8_Counter2=0;
+[e = F201 -> -> 0 `i `uc ]
+"40
+[; ;tasks1.c: 40:  }
+}
+[e :U 13 ]
+"45
+[; ;tasks1.c: 45: }
+[e :UE 7 ]
+}
+"46
+[; ;tasks1.c: 46: void Task2(void){
+[v _Task2 `(v ~T0 @X0 1 ef ]
+{
+[e :U _Task2 ]
+[f ]
+"49
+[; ;tasks1.c: 49: static uint16_t adc_data = 0;
+[v F203 `ui ~T0 @X0 1 s adc_data ]
+[i F203
+-> -> 0 `i `ui
+]
+"50
+[; ;tasks1.c: 50:  static uint8_t EE_Address = 0x0020;
+[v F204 `uc ~T0 @X0 1 s EE_Address ]
+[i F204
+-> -> 32 `i `uc
+]
+"51
+[; ;tasks1.c: 51:  static uint8_t EE_Data = 0;
+[v F205 `uc ~T0 @X0 1 s EE_Data ]
+[i F205
+-> -> 0 `i `uc
+]
+"52
+[; ;tasks1.c: 52:  static uint8_t readings_counter = 0;
+[v F206 `uc ~T0 @X0 1 s readings_counter ]
+[i F206
+-> -> 0 `i `uc
+]
+"53
+[; ;tasks1.c: 53:         uint8_t ret = 0 ;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"55
+[; ;tasks1.c: 55: EE_Data=adc_data;
+[e = F205 -> F203 `uc ]
+"58
+[; ;tasks1.c: 58:   ret = sevenSegWrite(ADC_READ());
+[e = _ret ( _sevenSegWrite (1 -> ( _ADC_READ ..  `uc ]
+"59
+[; ;tasks1.c: 59:  EEPROM_Write(EE_Address, EE_Data);
+[e ( _EEPROM_Write (2 , -> F204 `ui F205 ]
+"60
+[; ;tasks1.c: 60: last_temp_reading= EEPROM_Read(EE_Address);
+[e = _last_temp_reading -> ( _EEPROM_Read (1 -> F204 `ui `ui ]
+"61
+[; ;tasks1.c: 61: last_Ten_readings[readings_counter]=adc_data;
+[e = *U + &U _last_Ten_readings * -> F206 `ux -> -> # *U &U _last_Ten_readings `ui `ux F203 ]
+"62
+[; ;tasks1.c: 62:  readings_counter++;
+[e ++ F206 -> -> 1 `i `uc ]
+"65
+[; ;tasks1.c: 65: }
+[e :UE 14 ]
+}
+"66
+[; ;tasks1.c: 66: void Task3(void){
+[v _Task3 `(v ~T0 @X0 1 ef ]
+{
+[e :U _Task3 ]
+[f ]
+"70
+[; ;tasks1.c: 70: }
+[e :UE 15 ]
+}

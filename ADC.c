@@ -53,5 +53,6 @@ return ((ADC_RESULTHIGH << 8) + ADC_RESULTLOW); // Return The Right-Justified 10
 void adc_interrupt_routine(void)
 {
 u16_result_data=((ADC_RESULTHIGH<<8)+ADC_RESULTLOW);
-clear_int_flag(ADC_INTERRUPT);
+PIR1 &= (~ADIF);
+
 }

@@ -7,20 +7,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 ./seven_segment.h
 [; ;./seven_segment.h: 12: void seven_seg_POV (void);
 [v _seven_seg_POV `(v ~T0 @X0 0 ef ]
-"17 ./sosConfig.h
-[; ;./sosConfig.h: 17: typedef struct TMU_ConfigType{
-[s S4 `uc 1 `uc 1 ]
-[n S4 TMU_ConfigType u8_resolution u8_Timer_channel ]
+"28 ./Timer.h
+[; ;./Timer.h: 28: ERROR_STATUS Timer_Init(Timer_cfg_s* Timer_cfg);
+[v _Timer_Init `(uc ~T0 @X0 0 ef1`*S1 ]
+"122 ./Timer_Config.h
+[; ;./Timer_Config.h: 122: extern Timer_cfg_s Timer_Configuration0;
+[v _Timer_Configuration0 `S1 ~T0 @X0 0 e ]
+"42 ./Timer.h
+[; ;./Timer.h: 42: ERROR_STATUS Timer_Start(uint8_t Timer_CH_NO, uint16_t Timer_Count);
+[v _Timer_Start `(uc ~T0 @X0 0 ef2`uc`ui ]
+"13 ./sosConfig.h
+[; ;./sosConfig.h: 13: typedef struct TMU_ConfigType{
+[s S2 `uc 1 `uc 1 ]
+[n S2 TMU_ConfigType u8_resolution u8_Timer_channel ]
 "12 ./SOS.h
 [; ;./SOS.h: 12:   ERROR_STATUS SOS_Init (const TMU_ConfigType * ConfigPtr );
-[v _SOS_Init `(uc ~T0 @X0 0 ef1`*CS4 ]
-"28 ./sosConfig.h
-[; ;./sosConfig.h: 28: extern const TMU_ConfigType TMU_Configuration;
-[v _TMU_Configuration `CS4 ~T0 @X0 0 e ]
-[v F173 `(v ~T0 @X0 0 tf ]
+[v _SOS_Init `(uc ~T0 @X0 0 ef1`*CS2 ]
+"24 ./sosConfig.h
+[; ;./sosConfig.h: 24: extern const TMU_ConfigType TMU_Configuration;
+[v _TMU_Configuration `CS2 ~T0 @X0 0 e ]
+[v F78 `(v ~T0 @X0 0 tf ]
 "37 ./SOS.h
 [; ;./SOS.h: 37:  ERROR_STATUS SOS_Create_Task(ptr_to_Fun Function_Consumer,uint8_t u8_Preodicity,uint8_t u8_function_index,uint16_t u16_Time_delay);
-[v _SOS_Create_Task `(uc ~T0 @X0 0 ef4`*F173`uc`uc`ui ]
+[v _SOS_Create_Task `(uc ~T0 @X0 0 ef4`*F78`uc`uc`ui ]
 "53
 [; ;./SOS.h: 53:  extern void Task1(void);
 [v _Task1 `(v ~T0 @X0 0 ef ]
@@ -30,8 +39,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 "55
 [; ;./SOS.h: 55:  extern void Task3(void);
 [v _Task3 `(v ~T0 @X0 0 ef ]
+"58 ./DIO_Config.h
+[; ;./DIO_Config.h: 58: typedef struct DIO_Cfg_s{
+[s S5 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S5 DIO_Cfg_s port dir pin operation_mode ]
+"13 ./DIO.h
+[; ;./DIO.h: 13: ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);
+[v _DIO_init `(uc ~T0 @X0 0 ef1`*S5 ]
+"71 ./DIO_Config.h
+[; ;./DIO_Config.h: 71: extern DIO_Cfg_s Dio_configutation_C;
+[v _Dio_configutation_C `S5 ~T0 @X0 0 e ]
+"69
+[; ;./DIO_Config.h: 69: extern DIO_Cfg_s Dio_configutation_A_ADC ;
+[v _Dio_configutation_A_ADC `S5 ~T0 @X0 0 e ]
+"14 ./ADC_Config.h
+[; ;./ADC_Config.h: 14: typedef struct ADC_Cfg_s{
+[s S6 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S6 ADC_Cfg_s u8_Channel_Number u8_Prescaler clock_configuration u8_ten_bit_arrangment u8_polling_interrupt ]
+"17 ./ADC.h
+[; ;./ADC.h: 17: ERROR_STATUS ADC_INIT(ADC_Cfg_s *ADC_info);
+[v _ADC_INIT `(uc ~T0 @X0 0 ef1`*S6 ]
+"56 ./ADC_Config.h
+[; ;./ADC_Config.h: 56: extern ADC_Cfg_s ADC_Cnfiguration;
+[v _ADC_Cnfiguration `S6 ~T0 @X0 0 e ]
+"31 ./seven_segment.h
+[; ;./seven_segment.h: 31: ERROR_STATUS sevenSegInit(void);
+[v _sevenSegInit `(uc ~T0 @X0 0 ef ]
+"13 ./i2c_EEPROM.h
+[; ;./i2c_EEPROM.h: 13: void I2C_Master_Init(const unsigned long baud);
+[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
 [p mainexit ]
-"49
+"49 ./SOS.h
 [; ;./SOS.h: 49:  ERROR_STATUS SOS_Run(void);
 [v _SOS_Run `(uc ~T0 @X0 0 ef ]
 "13 ./seven_segment.h
@@ -48,63 +86,86 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"9 main.c
-[; ;main.c: 9: void system_init(void)
-[v _system_init `(v ~T0 @X0 1 ef ]
+"8 main.c
+[; ;main.c: 8: static uint8_t ret=0;
+[v _ret `uc ~T0 @X0 1 s ]
+[i _ret
+-> -> 0 `i `uc
+]
 "10
-[; ;main.c: 10: {
+[; ;main.c: 10: void system_init(void)
+[v _system_init `(v ~T0 @X0 1 ef ]
+"11
+[; ;main.c: 11: {
 {
 [e :U _system_init ]
 [f ]
-"11
-[; ;main.c: 11: uint8_t ret=0;
-[v _ret `uc ~T0 @X0 1 a ]
-[e = _ret -> -> 0 `i `uc ]
+"12
+[; ;main.c: 12: ret = Timer_Init(&Timer_Configuration0);
+[e = _ret ( _Timer_Init (1 &U _Timer_Configuration0 ]
 "13
-[; ;main.c: 13: ret = SOS_Init(&TMU_Configuration);
-[e = _ret ( _SOS_Init (1 &U _TMU_Configuration ]
+[; ;main.c: 13: ret= Timer_Start(0,100);
+[e = _ret ( _Timer_Start (2 , -> -> 0 `i `uc -> -> 100 `i `ui ]
 "14
-[; ;main.c: 14:  ret = SOS_Create_Task(Task1,1,0,1);
-[e = _ret ( _SOS_Create_Task (4 , , , &U _Task1 -> -> 1 `i `uc -> -> 0 `i `uc -> -> 1 `i `ui ]
+[; ;main.c: 14: ret = SOS_Init(&TMU_Configuration);
+[e = _ret ( _SOS_Init (1 &U _TMU_Configuration ]
 "15
-[; ;main.c: 15: ret = SOS_Create_Task(Task2,1,1,50);
-[e = _ret ( _SOS_Create_Task (4 , , , &U _Task2 -> -> 1 `i `uc -> -> 1 `i `uc -> -> 50 `i `ui ]
+[; ;main.c: 15: ret = SOS_Create_Task(Task1,1,0,1);
+[e = _ret ( _SOS_Create_Task (4 , , , &U _Task1 -> -> 1 `i `uc -> -> 0 `i `uc -> -> 1 `i `ui ]
 "16
-[; ;main.c: 16: ret = SOS_Create_Task(Task3,1,2,2500);
+[; ;main.c: 16: ret = SOS_Create_Task(Task2,1,1,50);
+[e = _ret ( _SOS_Create_Task (4 , , , &U _Task2 -> -> 1 `i `uc -> -> 1 `i `uc -> -> 50 `i `ui ]
+"17
+[; ;main.c: 17: ret = SOS_Create_Task(Task3,1,2,2500);
 [e = _ret ( _SOS_Create_Task (4 , , , &U _Task3 -> -> 1 `i `uc -> -> 2 `i `uc -> -> 2500 `i `ui ]
 "18
-[; ;main.c: 18: }
+[; ;main.c: 18: ret = DIO_init(&Dio_configutation_C);
+[e = _ret ( _DIO_init (1 &U _Dio_configutation_C ]
+"19
+[; ;main.c: 19: ret = DIO_init(&Dio_configutation_A_ADC);
+[e = _ret ( _DIO_init (1 &U _Dio_configutation_A_ADC ]
+"20
+[; ;main.c: 20: ret = ADC_INIT(&ADC_Cnfiguration);
+[e = _ret ( _ADC_INIT (1 &U _ADC_Cnfiguration ]
+"21
+[; ;main.c: 21: ret = sevenSegInit();
+[e = _ret ( _sevenSegInit ..  ]
+"22
+[; ;main.c: 22:  I2C_Master_Init(100000);
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
+"23
+[; ;main.c: 23: }
 [e :UE 7 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"19
-[; ;main.c: 19: void main(void) {
+"24
+[; ;main.c: 24: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"20
-[; ;main.c: 20:     system_init();
+"25
+[; ;main.c: 25:     system_init();
 [e ( _system_init ..  ]
-"21
-[; ;main.c: 21:   while(1)
+"26
+[; ;main.c: 26:   while(1)
 [e :U 10 ]
-"22
-[; ;main.c: 22:   {
+"27
+[; ;main.c: 27:   {
 {
-"23
-[; ;main.c: 23:  SOS_Run();
+"28
+[; ;main.c: 28:  SOS_Run();
 [e ( _SOS_Run ..  ]
-"24
-[; ;main.c: 24:   }
+"29
+[; ;main.c: 29:   }
 }
 [e :U 9 ]
 [e $U 10  ]
 [e :U 11 ]
-"25
-[; ;main.c: 25:   return;
+"30
+[; ;main.c: 30:   return;
 [e $UE 8  ]
-"26
-[; ;main.c: 26: }
+"31
+[; ;main.c: 31: }
 [e :UE 8 ]
 }

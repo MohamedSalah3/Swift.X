@@ -73,8 +73,9 @@ void EEPROM_Write(unsigned int add, unsigned char data)
 {
   I2C_Master_Start();
   // Wait Until EEPROM Is IDLE
-  while(I2C_Master_Write(EEPROM_Address_W))
+  if(I2C_Master_Write(EEPROM_Address_W))
     I2C_Master_RepeatedStart();
+  
   I2C_Master_Write(add>>8);
   I2C_Master_Write((unsigned char)add);
   I2C_Master_Write(data);
@@ -101,7 +102,7 @@ unsigned char EEPROM_Read(unsigned int add)
   unsigned char Data;
   I2C_Master_Start();
   // Wait Until EEPROM Is IDLE
-  while(I2C_Master_Write(EEPROM_Address_W))
+  //while(I2C_Master_Write(EEPROM_Address_W))
     I2C_Master_RepeatedStart();
   I2C_Master_Write(add>>8);
   I2C_Master_Write((unsigned char)add);

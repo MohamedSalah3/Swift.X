@@ -1,4 +1,4 @@
-# 1 "DIO_Config.c"
+# 1 "LM35.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,17 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "DIO_Config.c" 2
+# 1 "LM35.c" 2
+# 1 "./LM35.h" 1
+# 10 "./LM35.h"
+# 1 "./ADC.h" 1
+# 11 "./ADC.h"
+# 1 "./ADC_Config.h" 1
+# 10 "./ADC_Config.h"
+# 1 "./DIO.h" 1
+
+
+
 # 1 "./DIO_Config.h" 1
 # 10 "./DIO_Config.h"
 # 1 "./registers.h" 1
@@ -64,35 +74,77 @@ extern DIO_Cfg_s Dio_configutation_B;
 extern DIO_Cfg_s Dio_configutation_C;
 extern DIO_Cfg_s Dio_configutation_D;
 extern DIO_Cfg_s Dio_configutation_E;
-# 1 "DIO_Config.c" 2
+# 4 "./DIO.h" 2
+# 13 "./DIO.h"
+ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);
+# 42 "./DIO.h"
+ERROR_STATUS DIO_Write (uint8_t GPIO, uint8_t pins, uint8_t value);
+# 70 "./DIO.h"
+ERROR_STATUS DIO_Read (uint8_t GPIO,uint8_t pins, uint8_t *data);
+# 95 "./DIO.h"
+ERROR_STATUS DIO_Toggle (uint8_t GPIO, uint8_t pins);
+# 10 "./ADC_Config.h" 2
 
 
 
-DIO_Cfg_s Dio_configutation_A_ADC =
+
+typedef struct ADC_Cfg_s{
+    uint8_t u8_Channel_Number;
+    uint8_t u8_Prescaler;
+    uint8_t clock_configuration;
+    uint8_t u8_ten_bit_arrangment;
+    uint8_t u8_polling_interrupt;
+
+}ADC_Cfg_s;
+# 56 "./ADC_Config.h"
+extern ADC_Cfg_s ADC_Cnfiguration;
+# 11 "./ADC.h" 2
+
+# 1 "./softwareDelay.h" 1
+# 16 "./softwareDelay.h"
+void SwDelay_ms(uint32_t n);
+
+
+
+
+
+
+void SwDelay_us(uint32_t n);
+# 12 "./ADC.h" 2
+
+
+
+
+
+ERROR_STATUS ADC_INIT(ADC_Cfg_s *ADC_info);
+
+
+uint16_t ADC_READ(void);
+
+void adc_interrupt_routine(void);
+# 10 "./LM35.h" 2
+
+
+ERROR_STATUS Temp_sensor_init(void);
+
+void Temp_sensor_read(uint16_t *temp_readings);
+# 1 "LM35.c" 2
+
+
+
+
+ERROR_STATUS Temp_sensor_init(void)
 {
-    0,0x01,0x00,0x06
-};
-DIO_Cfg_s Dio_configutation_A_7_seg =
+    uint8_t ret = 0;
+ret = DIO_init(&Dio_configutation_A_ADC);
+
+ret = ADC_INIT(&ADC_Cnfiguration);
+return ret;
+}
+
+
+void Temp_sensor_read(uint16_t *temp_readings)
 {
-0,
-0x04|0x08
-,0xFF
-,0x06
-};
-DIO_Cfg_s Dio_configutation_B =
-{
-    1,
-    0xFF,
-    0xFF,
-};
-DIO_Cfg_s Dio_configutation_C=
-{
-    2
-        ,0x08|0x10|0x20|0x40|0x80
-        ,0x00,
-};
-DIO_Cfg_s Dio_configutation_D =
-{
-    3,0xFF,0xFF,
-};
-DIO_Cfg_s Dio_configutation_E;
+*temp_readings = ADC_READ();
+*temp_readings /= 2;
+}

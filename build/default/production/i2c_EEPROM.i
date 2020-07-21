@@ -1809,8 +1809,9 @@ void EEPROM_Write(unsigned int add, unsigned char data)
 {
   I2C_Master_Start();
 
-  while(I2C_Master_Write(0xA0))
+  if(I2C_Master_Write(0xA0))
     I2C_Master_RepeatedStart();
+
   I2C_Master_Write(add>>8);
   I2C_Master_Write((unsigned char)add);
   I2C_Master_Write(data);
@@ -1837,7 +1838,7 @@ unsigned char EEPROM_Read(unsigned int add)
   unsigned char Data;
   I2C_Master_Start();
 
-  while(I2C_Master_Write(0xA0))
+
     I2C_Master_RepeatedStart();
   I2C_Master_Write(add>>8);
   I2C_Master_Write((unsigned char)add);

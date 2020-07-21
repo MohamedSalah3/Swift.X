@@ -104,5 +104,5 @@ ADC_Cfg_s ADC_Cnfiguration =
     1,
     0x40,
     0x80,
-    0xBF
+    0x40
 } ;

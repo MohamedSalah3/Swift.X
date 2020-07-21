@@ -42,8 +42,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pushButton.c: 30: {
 {
 "31
-[; ;pushButton.c: 31:     DIO_Read(2,0x10,&(u8_Button_press[0]));
-[e ( _DIO_Read (3 , , -> -> 2 `i `uc -> -> 16 `i `uc &U *U + &U F80 * -> -> -> 0 `i `ui `ux -> -> # *U &U F80 `ui `ux ]
+[; ;pushButton.c: 31:     DIO_Read(2,0x20,&(u8_Button_press[0]));
+[e ( _DIO_Read (3 , , -> -> 2 `i `uc -> -> 32 `i `uc &U *U + &U F80 * -> -> -> 0 `i `ui `ux -> -> # *U &U F80 `ui `ux ]
 "32
 [; ;pushButton.c: 32: if( u8_Button_press[0]== Pressed)
 [e $ ! == -> *U + &U F80 * -> -> -> 0 `i `ui `ux -> -> # *U &U F80 `ui `ux `i -> . `E67 1 `i 6  ]
@@ -54,8 +54,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pushButton.c: 34:  (u8_S_button_status[0])++;
 [e ++ *U + &U F81 * -> -> -> 0 `i `ui `ux -> -> # *U &U F81 `ui `ux -> -> 1 `i `uc ]
 "38
-[; ;pushButton.c: 38:  if( (u8_S_button_status[0]) > 50)
-[e $ ! > -> *U + &U F81 * -> -> -> 0 `i `ui `ux -> -> # *U &U F81 `ui `ux `i -> 50 `i 7  ]
+[; ;pushButton.c: 38:  if( (u8_S_button_status[0]) > 10)
+[e $ ! > -> *U + &U F81 * -> -> -> 0 `i `ui `ux -> -> # *U &U F81 `ui `ux `i -> 10 `i 7  ]
 "39
 [; ;pushButton.c: 39:  pushreturn = Pressed;
 [e = _pushreturn -> . `E67 1 `uc ]
@@ -89,8 +89,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pushButton.c: 45: {
 {
 "46
-[; ;pushButton.c: 46:     DIO_Read(1,0x04,&(u8_Button_press[1]));
-[e ( _DIO_Read (3 , , -> -> 1 `i `uc -> -> 4 `i `uc &U *U + &U F80 * -> -> -> 1 `i `ui `ux -> -> # *U &U F80 `ui `ux ]
+[; ;pushButton.c: 46:     DIO_Read(2,0x40,&(u8_Button_press[1]));
+[e ( _DIO_Read (3 , , -> -> 2 `i `uc -> -> 64 `i `uc &U *U + &U F80 * -> -> -> 1 `i `ui `ux -> -> # *U &U F80 `ui `ux ]
 "47
 [; ;pushButton.c: 47: if( u8_Button_press[1] == Pressed)
 [e $ ! == -> *U + &U F80 * -> -> -> 1 `i `ui `ux -> -> # *U &U F80 `ui `ux `i -> . `E67 1 `i 11  ]
@@ -101,8 +101,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pushButton.c: 49:  (u8_S_button_status[0])++;
 [e ++ *U + &U F81 * -> -> -> 0 `i `ui `ux -> -> # *U &U F81 `ui `ux -> -> 1 `i `uc ]
 "53
-[; ;pushButton.c: 53:  if( (u8_S_button_status[0]) > 50)
-[e $ ! > -> *U + &U F81 * -> -> -> 0 `i `ui `ux -> -> # *U &U F81 `ui `ux `i -> 50 `i 12  ]
+[; ;pushButton.c: 53:  if( (u8_S_button_status[0]) > 10)
+[e $ ! > -> *U + &U F81 * -> -> -> 0 `i `ui `ux -> -> # *U &U F81 `ui `ux `i -> 10 `i 12  ]
 "54
 [; ;pushButton.c: 54: return Pressed;
 [e ) . `E67 1 ]
@@ -137,8 +137,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pushButton.c: 60: {
 {
 "61
-[; ;pushButton.c: 61:     DIO_Read(0,0x04,&(u8_Button_press[2]));
-[e ( _DIO_Read (3 , , -> -> 0 `i `uc -> -> 4 `i `uc &U *U + &U F80 * -> -> -> 2 `i `ui `ux -> -> # *U &U F80 `ui `ux ]
+[; ;pushButton.c: 61:     DIO_Read(2,0x80,&(u8_Button_press[2]));
+[e ( _DIO_Read (3 , , -> -> 2 `i `uc -> -> 128 `i `uc &U *U + &U F80 * -> -> -> 2 `i `ui `ux -> -> # *U &U F80 `ui `ux ]
 "62
 [; ;pushButton.c: 62: if((u8_Button_press[2])== Pressed)
 [e $ ! == -> *U + &U F80 * -> -> -> 2 `i `ui `ux -> -> # *U &U F80 `ui `ux `i -> . `E67 1 `i 16  ]
@@ -147,8 +147,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e ++ *U + &U F81 * -> -> -> 1 `i `ui `ux -> -> # *U &U F81 `ui `ux -> -> 1 `i `uc ]
 "67
-[; ;pushButton.c: 67:  if( (u8_S_button_status[1]) > 20)
-[e $ ! > -> *U + &U F81 * -> -> -> 1 `i `ui `ux -> -> # *U &U F81 `ui `ux `i -> 20 `i 17  ]
+[; ;pushButton.c: 67:  if( (u8_S_button_status[1]) > 10)
+[e $ ! > -> *U + &U F81 * -> -> -> 1 `i `ui `ux -> -> # *U &U F81 `ui `ux `i -> 10 `i 17  ]
 "68
 [; ;pushButton.c: 68:  pushreturn = Pressed;
 [e = _pushreturn -> . `E67 1 `uc ]

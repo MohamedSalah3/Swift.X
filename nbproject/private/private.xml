@@ -2,6 +2,37 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/pushButton.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/nvm.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/seven_segment_Config.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/nvm.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/registers.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/seven_segment.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/LM35.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/pushButtonConfig.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/software_delay.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/ADC.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/LM35.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/interrupts.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/Timer_Config.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/softwareDelay.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/interrupts.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/Timer.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/DIO.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/Timer.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/DIO.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/SOS.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/main.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/ADC.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/SOS.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/ADC_Config.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/seven_segment.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/i2c_EEPROM.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/ADC_Config.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/DIO_Config.h</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/DIO_Config.c</file>
+            <file>file:/C:/Users/mo/MPLABXProjects/Swift.X/pushButton.h</file>
+        </group>
     </open-files>
 </project-private>

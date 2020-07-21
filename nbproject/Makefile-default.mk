@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=ADC.c ADC_Config.c seven_segment.c DIO_Config.c interrupts.c pushButton.c i2c_EEPROM.c DIO.c software_delay.c SOS.c SOS_Config.c Timer.c Timer_Config.c main.c tasks.c
+SOURCEFILES_QUOTED_IF_SPACED=ADC.c ADC_Config.c seven_segment.c DIO_Config.c interrupts.c pushButton.c i2c_EEPROM.c DIO.c software_delay.c SOS.c SOS_Config.c Timer.c Timer_Config.c main.c nvm.c LM35.c tasks1.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/ADC_Config.p1 ${OBJECTDIR}/seven_segment.p1 ${OBJECTDIR}/DIO_Config.p1 ${OBJECTDIR}/interrupts.p1 ${OBJECTDIR}/pushButton.p1 ${OBJECTDIR}/i2c_EEPROM.p1 ${OBJECTDIR}/DIO.p1 ${OBJECTDIR}/software_delay.p1 ${OBJECTDIR}/SOS.p1 ${OBJECTDIR}/SOS_Config.p1 ${OBJECTDIR}/Timer.p1 ${OBJECTDIR}/Timer_Config.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/tasks.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/ADC.p1.d ${OBJECTDIR}/ADC_Config.p1.d ${OBJECTDIR}/seven_segment.p1.d ${OBJECTDIR}/DIO_Config.p1.d ${OBJECTDIR}/interrupts.p1.d ${OBJECTDIR}/pushButton.p1.d ${OBJECTDIR}/i2c_EEPROM.p1.d ${OBJECTDIR}/DIO.p1.d ${OBJECTDIR}/software_delay.p1.d ${OBJECTDIR}/SOS.p1.d ${OBJECTDIR}/SOS_Config.p1.d ${OBJECTDIR}/Timer.p1.d ${OBJECTDIR}/Timer_Config.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/tasks.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/ADC_Config.p1 ${OBJECTDIR}/seven_segment.p1 ${OBJECTDIR}/DIO_Config.p1 ${OBJECTDIR}/interrupts.p1 ${OBJECTDIR}/pushButton.p1 ${OBJECTDIR}/i2c_EEPROM.p1 ${OBJECTDIR}/DIO.p1 ${OBJECTDIR}/software_delay.p1 ${OBJECTDIR}/SOS.p1 ${OBJECTDIR}/SOS_Config.p1 ${OBJECTDIR}/Timer.p1 ${OBJECTDIR}/Timer_Config.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/nvm.p1 ${OBJECTDIR}/LM35.p1 ${OBJECTDIR}/tasks1.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/ADC.p1.d ${OBJECTDIR}/ADC_Config.p1.d ${OBJECTDIR}/seven_segment.p1.d ${OBJECTDIR}/DIO_Config.p1.d ${OBJECTDIR}/interrupts.p1.d ${OBJECTDIR}/pushButton.p1.d ${OBJECTDIR}/i2c_EEPROM.p1.d ${OBJECTDIR}/DIO.p1.d ${OBJECTDIR}/software_delay.p1.d ${OBJECTDIR}/SOS.p1.d ${OBJECTDIR}/SOS_Config.p1.d ${OBJECTDIR}/Timer.p1.d ${OBJECTDIR}/Timer_Config.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/nvm.p1.d ${OBJECTDIR}/LM35.p1.d ${OBJECTDIR}/tasks1.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/ADC_Config.p1 ${OBJECTDIR}/seven_segment.p1 ${OBJECTDIR}/DIO_Config.p1 ${OBJECTDIR}/interrupts.p1 ${OBJECTDIR}/pushButton.p1 ${OBJECTDIR}/i2c_EEPROM.p1 ${OBJECTDIR}/DIO.p1 ${OBJECTDIR}/software_delay.p1 ${OBJECTDIR}/SOS.p1 ${OBJECTDIR}/SOS_Config.p1 ${OBJECTDIR}/Timer.p1 ${OBJECTDIR}/Timer_Config.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/tasks.p1
+OBJECTFILES=${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/ADC_Config.p1 ${OBJECTDIR}/seven_segment.p1 ${OBJECTDIR}/DIO_Config.p1 ${OBJECTDIR}/interrupts.p1 ${OBJECTDIR}/pushButton.p1 ${OBJECTDIR}/i2c_EEPROM.p1 ${OBJECTDIR}/DIO.p1 ${OBJECTDIR}/software_delay.p1 ${OBJECTDIR}/SOS.p1 ${OBJECTDIR}/SOS_Config.p1 ${OBJECTDIR}/Timer.p1 ${OBJECTDIR}/Timer_Config.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/nvm.p1 ${OBJECTDIR}/LM35.p1 ${OBJECTDIR}/tasks1.p1
 
 # Source Files
-SOURCEFILES=ADC.c ADC_Config.c seven_segment.c DIO_Config.c interrupts.c pushButton.c i2c_EEPROM.c DIO.c software_delay.c SOS.c SOS_Config.c Timer.c Timer_Config.c main.c tasks.c
+SOURCEFILES=ADC.c ADC_Config.c seven_segment.c DIO_Config.c interrupts.c pushButton.c i2c_EEPROM.c DIO.c software_delay.c SOS.c SOS_Config.c Timer.c Timer_Config.c main.c nvm.c LM35.c tasks1.c
 
 
 
@@ -206,13 +206,29 @@ ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/main.d ${OBJECTDIR}/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/tasks.p1: tasks.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/nvm.p1: nvm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/tasks.p1.d 
-	@${RM} ${OBJECTDIR}/tasks.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/tasks.p1 tasks.c 
-	@-${MV} ${OBJECTDIR}/tasks.d ${OBJECTDIR}/tasks.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/tasks.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/nvm.p1.d 
+	@${RM} ${OBJECTDIR}/nvm.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/nvm.p1 nvm.c 
+	@-${MV} ${OBJECTDIR}/nvm.d ${OBJECTDIR}/nvm.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/nvm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/LM35.p1: LM35.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LM35.p1.d 
+	@${RM} ${OBJECTDIR}/LM35.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LM35.p1 LM35.c 
+	@-${MV} ${OBJECTDIR}/LM35.d ${OBJECTDIR}/LM35.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/LM35.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/tasks1.p1: tasks1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/tasks1.p1.d 
+	@${RM} ${OBJECTDIR}/tasks1.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/tasks1.p1 tasks1.c 
+	@-${MV} ${OBJECTDIR}/tasks1.d ${OBJECTDIR}/tasks1.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/tasks1.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/ADC.p1: ADC.c  nbproject/Makefile-${CND_CONF}.mk
@@ -327,13 +343,29 @@ ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/main.d ${OBJECTDIR}/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/tasks.p1: tasks.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/nvm.p1: nvm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/tasks.p1.d 
-	@${RM} ${OBJECTDIR}/tasks.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/tasks.p1 tasks.c 
-	@-${MV} ${OBJECTDIR}/tasks.d ${OBJECTDIR}/tasks.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/tasks.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/nvm.p1.d 
+	@${RM} ${OBJECTDIR}/nvm.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/nvm.p1 nvm.c 
+	@-${MV} ${OBJECTDIR}/nvm.d ${OBJECTDIR}/nvm.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/nvm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/LM35.p1: LM35.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LM35.p1.d 
+	@${RM} ${OBJECTDIR}/LM35.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/LM35.p1 LM35.c 
+	@-${MV} ${OBJECTDIR}/LM35.d ${OBJECTDIR}/LM35.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/LM35.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/tasks1.p1: tasks1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/tasks1.p1.d 
+	@${RM} ${OBJECTDIR}/tasks1.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/tasks1.p1 tasks1.c 
+	@-${MV} ${OBJECTDIR}/tasks1.d ${OBJECTDIR}/tasks1.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/tasks1.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

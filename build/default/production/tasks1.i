@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "tasks1.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,13 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
-
-
-
+# 1 "tasks1.c" 2
 # 1 "./tasks.h" 1
 # 11 "./tasks.h"
 # 1 "./SOS.h" 1
@@ -350,29 +344,74 @@ En_buttonStatus_t pushButtonGetStatus(En_buttonId_t en_butotn_id);
 
 extern void check_button(void);
 # 16 "./tasks.h" 2
-# 7 "main.c" 2
+# 1 "tasks1.c" 2
 
-static uint8_t ret=0;
 
-void system_init(void)
+static uint16_t last_temp_reading =0;
+static uint16_t last_Ten_readings[10];
+
+void Task1(void)
 {
-ret = Timer_Init(&Timer_Configuration0);
-ret= Timer_Start(0,100);
-ret = SOS_Init(&TMU_Configuration);
-ret = SOS_Create_Task(Task1,1,0,1);
-ret = SOS_Create_Task(Task2,1,1,50);
-ret = SOS_Create_Task(Task3,1,2,2500);
-ret = DIO_init(&Dio_configutation_C);
-ret = DIO_init(&Dio_configutation_A_ADC);
-ret = ADC_INIT(&ADC_Cnfiguration);
-ret = sevenSegInit();
- I2C_Master_Init(100000);
+  static uint8_t u8_Counter1=0;
+  static uint8_t u8_Counter=0;
+
+  static uint8_t u8_Counter2=0;
+ if (pushButtonGetStatus(BTN_0))
+ {
+  u8_Counter++;
+ }
+ if (u8_Counter > 10)
+ {
+
+            u8_Counter=0;
+ }
+
+ if (pushButtonGetStatus(BTN_1))
+ {
+  u8_Counter1++;
+
+ }
+ if (u8_Counter1 > 10)
+ {
+
+  u8_Counter1=0;
+ }
+        if (pushButtonGetStatus(BTN_2))
+ {
+  u8_Counter2++;
+ }
+ if (u8_Counter2 > 10)
+ {
+
+            u8_Counter2=0;
+ }
+
+
+
+
 }
-void main(void) {
-    system_init();
-  while(1)
-  {
- SOS_Run();
-  }
-  return;
+void Task2(void){
+
+
+static uint16_t adc_data = 0;
+ static uint8_t EE_Address = 0x0020;
+ static uint8_t EE_Data = 0;
+ static uint8_t readings_counter = 0;
+        uint8_t ret = 0 ;
+
+EE_Data=adc_data;
+
+
+  ret = sevenSegWrite(ADC_READ());
+ EEPROM_Write(EE_Address, EE_Data);
+last_temp_reading= EEPROM_Read(EE_Address);
+last_Ten_readings[readings_counter]=adc_data;
+ readings_counter++;
+
+
+}
+void Task3(void){
+
+
+
 }

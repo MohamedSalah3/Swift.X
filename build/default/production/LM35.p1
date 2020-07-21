@@ -1,0 +1,73 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"58 ./DIO_Config.h
+[; ;./DIO_Config.h: 58: typedef struct DIO_Cfg_s{
+[s S1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1 DIO_Cfg_s port dir pin operation_mode ]
+"13 ./DIO.h
+[; ;./DIO.h: 13: ERROR_STATUS DIO_init (DIO_Cfg_s *DIO_info);
+[v _DIO_init `(uc ~T0 @X0 0 ef1`*S1 ]
+"69 ./DIO_Config.h
+[; ;./DIO_Config.h: 69: extern DIO_Cfg_s Dio_configutation_A_ADC ;
+[v _Dio_configutation_A_ADC `S1 ~T0 @X0 0 e ]
+"14 ./ADC_Config.h
+[; ;./ADC_Config.h: 14: typedef struct ADC_Cfg_s{
+[s S2 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2 ADC_Cfg_s u8_Channel_Number u8_Prescaler clock_configuration u8_ten_bit_arrangment u8_polling_interrupt ]
+"17 ./ADC.h
+[; ;./ADC.h: 17: ERROR_STATUS ADC_INIT(ADC_Cfg_s *ADC_info);
+[v _ADC_INIT `(uc ~T0 @X0 0 ef1`*S2 ]
+"56 ./ADC_Config.h
+[; ;./ADC_Config.h: 56: extern ADC_Cfg_s ADC_Cnfiguration;
+[v _ADC_Cnfiguration `S2 ~T0 @X0 0 e ]
+"20 ./ADC.h
+[; ;./ADC.h: 20: uint16_t ADC_READ(void);
+[v _ADC_READ `(ui ~T0 @X0 0 ef ]
+"5 LM35.c
+[; ;LM35.c: 5: ERROR_STATUS Temp_sensor_init(void)
+[v _Temp_sensor_init `(uc ~T0 @X0 1 ef ]
+"6
+[; ;LM35.c: 6: {
+{
+[e :U _Temp_sensor_init ]
+[f ]
+"7
+[; ;LM35.c: 7:     uint8_t ret = 0;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"8
+[; ;LM35.c: 8: ret = DIO_init(&Dio_configutation_A_ADC);
+[e = _ret ( _DIO_init (1 &U _Dio_configutation_A_ADC ]
+"10
+[; ;LM35.c: 10: ret = ADC_INIT(&ADC_Cnfiguration);
+[e = _ret ( _ADC_INIT (1 &U _ADC_Cnfiguration ]
+"11
+[; ;LM35.c: 11: return ret;
+[e ) _ret ]
+[e $UE 3  ]
+"12
+[; ;LM35.c: 12: }
+[e :UE 3 ]
+}
+"15
+[; ;LM35.c: 15: void Temp_sensor_read(uint16_t *temp_readings)
+[v _Temp_sensor_read `(v ~T0 @X0 1 ef1`*ui ]
+"16
+[; ;LM35.c: 16: {
+{
+[e :U _Temp_sensor_read ]
+"15
+[; ;LM35.c: 15: void Temp_sensor_read(uint16_t *temp_readings)
+[v _temp_readings `*ui ~T0 @X0 1 r1 ]
+"16
+[; ;LM35.c: 16: {
+[f ]
+"17
+[; ;LM35.c: 17: *temp_readings = ADC_READ();
+[e = *U _temp_readings ( _ADC_READ ..  ]
+"18
+[; ;LM35.c: 18: *temp_readings /= 2;
+[e =/ *U _temp_readings -> -> 2 `i `ui ]
+"19
+[; ;LM35.c: 19: }
+[e :UE 4 ]
+}

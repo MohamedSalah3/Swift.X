@@ -176,5 +176,6 @@ return ((*((reg_type8_t)(0x001E)) << 8) + *((reg_type8_t)(0x009E)));
 void adc_interrupt_routine(void)
 {
 u16_result_data=((*((reg_type8_t)(0x001E))<<8)+*((reg_type8_t)(0x009E)));
-clear_int_flag(0x40);
+*((reg_type8_t)(0x000C)) &= (~0x40);
+
 }

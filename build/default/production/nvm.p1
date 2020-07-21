@@ -1,0 +1,69 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"13 ./i2c_EEPROM.h
+[; ;./i2c_EEPROM.h: 13: void I2C_Master_Init(const unsigned long baud);
+[v _I2C_Master_Init `(v ~T0 @X0 0 ef1`Cul ]
+"23
+[; ;./i2c_EEPROM.h: 23: void EEPROM_Write(unsigned int add, unsigned char data);
+[v _EEPROM_Write `(v ~T0 @X0 0 ef2`ui`uc ]
+"25
+[; ;./i2c_EEPROM.h: 25: unsigned char EEPROM_Read(unsigned int add);
+[v _EEPROM_Read `(uc ~T0 @X0 0 ef1`ui ]
+"3 nvm.c
+[; ;nvm.c: 3: ERROR_STATUS nvm_Write(uint8_t u8_data,uint16_t u16_address)
+[v _nvm_Write `(uc ~T0 @X0 1 ef2`uc`ui ]
+"4
+[; ;nvm.c: 4: {uint8_t ret_error = 0;
+{
+[e :U _nvm_Write ]
+"3
+[; ;nvm.c: 3: ERROR_STATUS nvm_Write(uint8_t u8_data,uint16_t u16_address)
+[v _u8_data `uc ~T0 @X0 1 r1 ]
+[v _u16_address `ui ~T0 @X0 1 r2 ]
+"4
+[; ;nvm.c: 4: {uint8_t ret_error = 0;
+[f ]
+[v _ret_error `uc ~T0 @X0 1 a ]
+[e = _ret_error -> -> 0 `i `uc ]
+"5
+[; ;nvm.c: 5:  I2C_Master_Init(100000);
+[e ( _I2C_Master_Init (1 -> -> 100000 `l `ul ]
+"6
+[; ;nvm.c: 6:  EEPROM_Write(u16_address, u8_data);
+[e ( _EEPROM_Write (2 , _u16_address _u8_data ]
+"7
+[; ;nvm.c: 7:   return ret_error;
+[e ) _ret_error ]
+[e $UE 1  ]
+"8
+[; ;nvm.c: 8: }
+[e :UE 1 ]
+}
+"11
+[; ;nvm.c: 11: ERROR_STATUS nvm_Read(uint8_t *u8_data,uint16_t u16_address)
+[v _nvm_Read `(uc ~T0 @X0 1 ef2`*uc`ui ]
+"12
+[; ;nvm.c: 12: {
+{
+[e :U _nvm_Read ]
+"11
+[; ;nvm.c: 11: ERROR_STATUS nvm_Read(uint8_t *u8_data,uint16_t u16_address)
+[v _u8_data `*uc ~T0 @X0 1 r1 ]
+[v _u16_address `ui ~T0 @X0 1 r2 ]
+"12
+[; ;nvm.c: 12: {
+[f ]
+"13
+[; ;nvm.c: 13:  uint8_t ret_error = 0;
+[v _ret_error `uc ~T0 @X0 1 a ]
+[e = _ret_error -> -> 0 `i `uc ]
+"14
+[; ;nvm.c: 14:  *u8_data=EEPROM_Read(u16_address);
+[e = *U _u8_data ( _EEPROM_Read (1 _u16_address ]
+"15
+[; ;nvm.c: 15:   return ret_error;
+[e ) _ret_error ]
+[e $UE 2  ]
+"16
+[; ;nvm.c: 16: }
+[e :UE 2 ]
+}

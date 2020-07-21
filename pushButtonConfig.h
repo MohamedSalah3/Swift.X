@@ -14,13 +14,13 @@
 
 
 #define BTN_0_GPIO	GPIOC
-#define BTN_0_BIT	BIT4
+#define BTN_0_BIT	BIT5
 
-#define BTN_1_GPIO	GPIOB
-#define BTN_1_BIT	BIT2
+#define BTN_1_GPIO	GPIOC
+#define BTN_1_BIT	BIT6
 
-#define BTN_2_GPIO	GPIOA
-#define BTN_2_BIT	BIT2
+#define BTN_2_GPIO	GPIOC
+#define BTN_2_BIT	BIT7
 
 #define BTN_3_GPIO 	GPIOA
 #define BTN_3_BIT	BIT3

@@ -9,10 +9,6 @@
 #ifndef SOS_CONFIG_H_
 #define SOS_CONFIG_H_
 #include "Timer.h"
-#include "ADC.h"
-#include "seven_segment.h"
-#include "i2c_EEPROM.h"
-#include "pushButton.h"
 /******************************************************************************/
 typedef struct TMU_ConfigType{
 

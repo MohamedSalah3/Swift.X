@@ -12,7 +12,6 @@
 
 #define Buffer_Size 3
 uint8_t u8_Init_finished=0;
-
 uint8_t u8_Is_Intialized=0;
 start_status start[Buffer_Size];
 uint8_t u8_FUN_index=0;
@@ -219,6 +218,6 @@ void TMU_Stop_Timer(uint8_t u8_function_index)
 
 void timer_interrupt(void)
 {
-u8Excution_to_be_done++;
+u8Excution_to_be_done=1;
 PIR1 &= (~TMR2IF);
 }

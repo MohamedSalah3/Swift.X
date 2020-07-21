@@ -35,7 +35,7 @@ if( u8_Button_press[0]== Pressed)
 	/************************************************************************/
 	/*         Debouncing Using Counting Algorithm			                */
 	/************************************************************************/
-	if( (u8_S_button_status[0]) > 50)
+	if( (u8_S_button_status[0]) > 10)
 	pushreturn = Pressed;
 	else {pushreturn = Released;}
 }else{pushreturn = Released;}
@@ -50,7 +50,7 @@ if( u8_Button_press[1] == Pressed)
 	/******************************6******************************************/
 	/*         Debouncing Using Counting Algorithm			                */
 	/************************************************************************/
-	if( (u8_S_button_status[0]) > 50)
+	if( (u8_S_button_status[0]) > 10)
 return Pressed;
 	else {pushreturn = Released;}
 }else{pushreturn = Released;}
@@ -64,7 +64,7 @@ if((u8_Button_press[2])== Pressed)
 	/************************************************************************/
 	/*         Debouncing Using Counting Algorithm			                */
 	/************************************************************************/
-	if( (u8_S_button_status[1]) > 20)
+	if( (u8_S_button_status[1]) > 10)
 	pushreturn = Pressed;
 else {pushreturn = Released;}
 }else{pushreturn = Released;}

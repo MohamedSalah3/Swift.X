@@ -1,5 +1,5 @@
-build/default/production/main.p1:  \
-main.c  \
+build/default/production/tasks1.p1:  \
+tasks1.c  \
 tasks.h  \
 SOS.h  \
 sosConfig.h  \
